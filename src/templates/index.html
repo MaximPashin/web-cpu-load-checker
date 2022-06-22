@@ -1,0 +1,19 @@
+<div id="redBox" style="text-align:center">
+	<img id="graphs" style="margin: auto" src="#"/>
+</div>
+
+<script type="text/javascript">
+    function PreviewImage(event) {
+		fetch("/get_graphs",{
+			method: "post"
+		}).then((response) => {
+			response.blob().then(result => {
+				var image = document.getElementById("graphs");
+				image.src = URL.createObjectURL(result);
+			})
+		})
+    };
+	
+	setTimeout(PreviewImage, 0);
+	setInterval(PreviewImage, 5000);
+</script>
